@@ -1,0 +1,22 @@
+<!-- templates/index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Booking System</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Event Booking System</h1>
+    </div>
+    <div class="container">
+        <h2>Events</h2>
+        {{range .}}
+            <div class="event">
+                <h3>{{.Name}}</h3>
+                <a href="/event/{{.ID}}">View Details</a>
+            </div>
+        {{end}}
+    </div>
+</body>
+</html>

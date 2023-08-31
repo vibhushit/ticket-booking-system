@@ -1,0 +1,29 @@
+<!-- templates/event.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{.Name}} - Event Details</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+    <div class="header">
+        <h1>{{.Name}}</h1>
+    </div>
+    <div class="container">
+        <h2>Tickets</h2>
+        <h3>Ticket Count: {{len .Tickets}}</h3>
+        {{range .Tickets}}
+            <div class="ticket">
+                <p>Ticket ID: {{.ID}}</p>
+                <p>Status: {{.Status}}</p>
+                {{if eq .Status "available"}}
+                    <form action="/event/{{.EventID}}" method="post">
+                        <input type="hidden" name="ticket_id" value="{{.ID}}">
+                        <button type="submit">Book Ticket</button>
+                    </form>
+                {{end}}
+            </div>
+        {{end}}
+    </div>
+</body>
+</html>
